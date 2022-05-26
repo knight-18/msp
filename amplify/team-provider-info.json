@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-mspbeta-dev-142741-authRole",
+      "UnauthRoleArn": "arn:aws:iam::626904548283:role/amplify-mspbeta-dev-142741-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::626904548283:role/amplify-mspbeta-dev-142741-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-mspbeta-dev-142741-deployment",
+      "UnauthRoleName": "amplify-mspbeta-dev-142741-unauthRole",
+      "StackName": "amplify-mspbeta-dev-142741",
+      "StackId": "arn:aws:cloudformation:us-east-1:626904548283:stack/amplify-mspbeta-dev-142741/e9a011e0-dcd1-11ec-89ee-127dfa5eb70f",
+      "AmplifyAppId": "d3g104zlkuwyth"
+    },
+    "categories": {
+      "auth": {
+        "mspbeta32599cd2": {}
+      }
+    }
+  }
+}

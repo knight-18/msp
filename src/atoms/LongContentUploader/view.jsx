@@ -1,0 +1,187 @@
+import { useEffect, useState } from "react";
+import { onLongVideoUpload } from "../../utils/api";
+import { v4 as uuidv4 } from "uuid";
+import { Button, SelectField } from "@aws-amplify/ui-react";
+import {
+  TextField,
+  Select,
+  MenuItem,
+  InputLabel,
+  Backdrop,
+  CircularProgress,
+  Paper,
+  Grid,
+} from "@mui/material";
+
+import { uploadFile } from "../../utils/storage";
+import defaultLanguages from "../../utils/config/language";
+import defaultGenres from "../../utils/config/genres";
+import "../../css/fileinput.css";
+
+export default function View({ singOut, user }) {
+  const [fileName, setFileName] = useState("");
+  const [fileData, setFileData] = useState(null);
+  const [filetype, setFiletype] = useState(null);
+  const [title, setTitle] = useState("");
+  const [genre, setGenre] = useState([]);
+  const [language, setLanguage] = useState("");
+  const [about, setAbout] = useState("");
+  const [isUploading, setIsUploading] = useState(false);
+  useEffect(() => {}, []);
+  const handleInputChange = (e) => {
+    setFileName(e.target.files[0].name);
+    setFileData(e.target.files[0]);
+    setFiletype(e.target.files[0].type);
+  };
+
+  const handleTitleChange = (e) => {
+    setTitle(e.target.value);
+  };
+  const handleGenreChange = (e) => {
+    setGenre(e.target.value);
+  };
+  const handleLanguageChange = (e) => {
+    setLanguage(e.target.value);
+  };
+  const handleAboutChange = (e) => {
+    setAbout(e.target.value);
+  };
+
+  const uploadVideo = async () => {
+    setIsUploading(true);
+    let fileId = uuidv4();
+
+    const res = await uploadFile(
+      process.env.REACT_APP_SOURCE_VIDEO_BUCKET_NAME,
+      "public",
+      process.env.REACT_APP_VIDEO_BUCKET_REGION,
+      process.env.REACT_APP_COGNITO_IDENTITY_POOL_ID,
+      fileName,
+      fileData,
+      filetype,
+      fileId,
+      "longVideos"
+    );
+    console.log("RES LOG:", res);
+    let sourceBucketFilePath = `/public/${res.key}`;
+    let reqBody = new Object({
+      id: fileId,
+      name: fileName,
+      title: title,
+      uploadedBy: user.attributes.email,
+      about: about,
+      sourceBucketFilePath: sourceBucketFilePath,
+      genres: genre,
+      language: language,
+      createdAt: Date.now(),
+      isDeleted: false,
+    });
+    console.log("Request Body: ", reqBody);
+    await onLongVideoUpload(reqBody);
+    console.log("Updated Database");
+    console.log("File uploaded successfully.");
+    setIsUploading(false);
+    window.location.href = "/long-content";
+  };
+
+  return (
+    <div
+      style={{
+        textAlign: "center",
+      }}
+    >
+      {isUploading && (
+        <Backdrop
+          sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+          open={isUploading}
+        >
+          <CircularProgress color="primary" />
+        </Backdrop>
+      )}
+
+      <Grid
+        container
+        direction="column"
+        justifyContent="center"
+        textAlign="center"
+        alignItems="center"
+      >
+        <h2>Upload Video</h2>
+        <div style={{ margin: "10px" }}>
+          <TextField
+            id="outlined-name"
+            label="Title"
+            value={title}
+            onChange={handleTitleChange}
+            style={{ width: "35vw" }}
+          />
+        </div>
+        <div style={{ margin: "10px" }}>
+          <TextField
+            id="outlined-name"
+            label="About"
+            value={about}
+            onChange={handleAboutChange}
+            style={{ width: "35vw" }}
+          />
+        </div>
+        <div>
+          <InputLabel
+            id="genre-select-label"
+            style={{ display: "flex", justifyContent: "left" }}
+          >
+            Genre
+          </InputLabel>
+          <Select
+            labelId="genre-select-label"
+            id="genre-select"
+            value={genre}
+            onChange={handleGenreChange}
+            multiple
+            style={{ width: "35vw" }}
+          >
+            {defaultGenres.map((defaultGenre) => (
+              <MenuItem key={defaultGenre} value={defaultGenre}>
+                {defaultGenre}
+              </MenuItem>
+            ))}
+          </Select>
+        </div>
+        <div>
+          <InputLabel
+            id="language-select-label"
+            style={{ display: "flex", justifyContent: "left" }}
+          >
+            Language
+          </InputLabel>
+          <Select
+            labelId="language-select-label"
+            id="language-select"
+            value={language}
+            onChange={handleLanguageChange}
+            style={{ width: "35vw" }}
+          >
+            {defaultLanguages.map((defaultLanguage) => {
+              return (
+                <MenuItem key={defaultLanguage} value={defaultLanguage}>
+                  {defaultLanguage}
+                </MenuItem>
+              );
+            })}
+          </Select>
+        </div>
+        <div className="file-input" style={{ margin: "5px" }}>
+          <Button style={{ width: "35vw" }}>
+            <input
+              type="file"
+              accept="video/*, image/png"
+              onChange={handleInputChange}
+            />
+          </Button>
+        </div>
+
+        <Button onClick={uploadVideo}>Upload</Button>
+      </Grid>
+    </div>
+  );
+}
