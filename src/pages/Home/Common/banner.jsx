@@ -37,7 +37,7 @@ const Banner = ({ user }) => {
   return (
     <div className="navbar_full_page">
       <div className="navbar">
-        <h1>
+        <h1 style={{fontWeight:"bold !important"}}> 
           <a href="/" style={{ textDecoration: "none", color: "white" }}>
             V<span style={{ color: "lime" }}>O</span>D
           </a>

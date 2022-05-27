@@ -1,3 +1,4 @@
+import { a } from "aws-amplify";
 import axios from "axios";
 const API_URL = process.env.REACT_APP_API_BASE_URL;
 export const onShortVideoUpload = async (body) => {
@@ -31,5 +32,15 @@ export const rateLongVideos = async (body) => {
 
 export const getLongVideos = async (body) => {
   let response = await axios.post(`${API_URL}/long-content/get`, body);
+  return response;
+};
+
+export const indexOpensearch = async (body) => {
+  let response = await axios.post(`${API_URL}/opensearch`, body);
+  return response;
+};
+
+export const fetchOpensearch = async (query) => {
+  let response = await axios.get(`${API_URL}/opensearch?q=${query}`);
   return response;
 };

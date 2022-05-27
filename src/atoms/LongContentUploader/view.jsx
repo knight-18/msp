@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { onLongVideoUpload } from "../../utils/api";
+import { indexOpensearch, onLongVideoUpload } from "../../utils/api";
 import { v4 as uuidv4 } from "uuid";
 import { Button, SelectField } from "@aws-amplify/ui-react";
 import {
@@ -80,6 +80,15 @@ export default function View({ singOut, user }) {
     await onLongVideoUpload(reqBody);
     console.log("Updated Database");
     console.log("File uploaded successfully.");
+    let indexData = {
+      id: fileId,
+      title: title,
+      genres: genre,
+      about: about,
+      _index: "videos",
+      _type: "_doc",
+    };
+    await indexOpensearch(indexData);
     setIsUploading(false);
     window.location.href = "/long-content";
   };

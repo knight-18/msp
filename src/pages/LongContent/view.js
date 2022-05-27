@@ -10,10 +10,11 @@ import {
 import { Button } from "@aws-amplify/ui-react";
 import defaultLanguages from "../../utils/config/language";
 import defaultGenres from "../../utils/config/genres";
-import { getLongVideos } from "../../utils/api";
+import { getLongVideos, fetchOpensearch } from "../../utils/api";
 import "../../css/searchbar.css";
 import Footer from "../../atoms/Footer";
 import ContentCard from "../../atoms/LongContent/ContentCard";
+
 export default function View({ user }) {
   const filterMap = {
     "Filter By Genre": defaultGenres,
@@ -56,18 +57,12 @@ export default function View({ user }) {
     if (query.length > 2) {
       setShowSearchResults(true);
       setIsSearchLoading(true);
-      //API CALL TO FETCH SEARCH RESULTS
-      let response = [
-        {
-          name: "Thor",
-          id: "66c8033c-f288-4a7b-94b3-488550099481",
-        },
-        {
-          name: "Iron Man",
-          id: "66c8033c-f288-4a7b-94b3-488550099481",
-        },
-      ];
-      setSearchResults(response);
+      fetchOpensearch(query).then((response) => {
+        setSearchResults(response.data.hits.hits);
+        setIsSearchLoading(false);
+      });
+    } else {
+      setShowSearchResults(false);
       setIsSearchLoading(false);
     }
   };
@@ -179,10 +174,11 @@ export default function View({ user }) {
                     searchResults.map((searchResult) => {
                       return (
                         <a
-                          href={`/long-content-player?id=${searchResult.id}`}
+                          key={searchResult._id}
+                          href={`/long-content-player?id=${searchResult._id}`}
                           style={{ textDecoration: "none", color: "white" }}
                         >
-                          <li key={searchResult.name}>{searchResult.name}</li>
+                          <li>{searchResult._source.title}</li>
                         </a>
                       );
                     })}

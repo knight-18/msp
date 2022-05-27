@@ -10,13 +10,15 @@ import {
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Footer from "../../../atoms/Footer";
-const View = ({user}) => {
+const View = ({ user }) => {
   return (
     <>
-      <Banner user={user}/>
+      <Banner user={user} />
       <Box
         sx={{
-          backgroundColor: "#22004a",
+          backgroundColor: "#000000",
+          backgroundImage:
+            "linear-gradient(225deg, #000000 0%, #784BA0 50%, #043e50 100%)",
         }}
       >
         <Grid container>
@@ -73,9 +75,9 @@ const View = ({user}) => {
             <Grid
               item
               m={1}
-              style={{ backgroundColor: "limegreen", width: "40%" }}
+              style={{ backgroundColor: "#1cd71c", width: "40%" }}
             >
-              <Accordion style={{ backgroundColor: "limegreen" }}>
+              <Accordion style={{ backgroundColor: "#1cd71c" }}>
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon />}
                   aria-controls="panel1a-content"
@@ -97,9 +99,9 @@ const View = ({user}) => {
             <Grid
               item
               m={1}
-              style={{ backgroundColor: "limegreen", width: "40%" }}
+              style={{ backgroundColor: "#1cd71c", width: "40%" }}
             >
-              <Accordion style={{ backgroundColor: "limegreen" }}>
+              <Accordion style={{ backgroundColor: "#1cd71c" }}>
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon />}
                   aria-controls="panel1a-content"
@@ -121,9 +123,9 @@ const View = ({user}) => {
             <Grid
               item
               m={1}
-              style={{ backgroundColor: "limegreen", width: "40%" }}
+              style={{ backgroundColor: "#1cd71c", width: "40%" }}
             >
-              <Accordion style={{ backgroundColor: "limegreen" }}>
+              <Accordion style={{ backgroundColor: "#1cd71c" }}>
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon />}
                   aria-controls="panel1a-content"
