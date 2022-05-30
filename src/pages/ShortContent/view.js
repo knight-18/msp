@@ -9,9 +9,14 @@ import {
   Typography,
   Backdrop,
   CircularProgress,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
 } from "@mui/material";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import FileUploadIcon from "@mui/icons-material/FileUpload";
 import axios from "axios";
+import Footer from "../../atoms/Footer";
 const useStyles = makeStyles((theme) => ({
   root: {
     padding: theme.spacing(12, 4),
@@ -44,7 +49,15 @@ export default function View({ user }) {
   const [isLoading, setIsLoading] = useState(false);
 
   return (
-    <div>
+    <div
+      style={{
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        background:
+          "url(https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974)",
+        // height:"100vh"
+      }}
+    >
       {isLoading && (
         <Backdrop
           sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
@@ -53,52 +66,101 @@ export default function View({ user }) {
           <CircularProgress color="primary" />
         </Backdrop>
       )}
-      <Box
-        sx={{
-          display: "flex",
-          flexWrap: "wrap",
-          "& > :not(style)": {
-            m: 1,
-            width: "250px",
-            height: "250px",
-          },
-        }}
-        style={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-        }}
-      >
-        <Paper elevation={5}>
-          <ShortVideoPlayerModal
-            user={user}
-            isModalOpen={isModalOpen}
-            handleModalOpen={handleModalOpen}
-            handleModalClose={handleModalClose}
-            isLoading={isLoading}
-            setIsLoading={setIsLoading}
-          />
-        </Paper>
 
-        <Paper elevation={5}>
-          <div style={{ position: "relative", top: "50%" }}>
-            <FileUploadIcon
-              onClick={() => {
-                window.location.href = "/upload-short-content";
-              }}
-              color="primary"
+      <Grid container direction="row">
+        <Grid item md={12} sm={12} m={2}>
+          <Paper
+            elevation={5}
+            style={{
+              backgroundColor: "#000000",
+              backgroundImage:
+                "linear-gradient(225deg, #000000 0%, #784BA0 50%, #043e50 100%)",
+              color: "white",
+              alignItems: "center",
+              alignContent: "center",
+              textAlign: "left",
+              padding: "2%",
+              minHeight: "50vh",
+            }}
+          >
+            <Grid
+              container
+              direction="column"
               style={{
-                position: "absolute",
-                top: "50%",
-                left: "50%",
-                transform: "translate(-50%, -50%)",
-                fontSize: "200px",
+                dipslay: "flex",
+                justifyContent: "space-around",
               }}
-            />
-          </div>
-        </Paper>
-      </Box>
+            >
+              <Grid item>
+                <Typography variant="h4">Short Content</Typography>
+                <Typography variant="h2">
+                  Short, entertaining <br /> videos to express your creativity
+                </Typography>
+              </Grid>
+              <Grid item mt="5px">
+                <ShortVideoPlayerModal
+                  user={user}
+                  isModalOpen={isModalOpen}
+                  handleModalOpen={handleModalOpen}
+                  handleModalClose={handleModalClose}
+                  isLoading={isLoading}
+                  setIsLoading={setIsLoading}
+                />
+                <Button
+                  backgroundColor="black"
+                  color="white"
+                  onClick={() => {
+                    window.location.href = "/upload-short-content";
+                  }}
+                  style={{ display: "inline-block", marginLeft: "5px" }}
+                >
+                  Upload Video
+                </Button>
+              </Grid>
+            </Grid>
+          </Paper>
+        </Grid>
+        <Grid container justifyContent="center" m={2}>
+          <Grid
+            container
+            direction="column"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <Grid
+              item
+              m={1}
+              style={{
+                backgroundColor: "#1cd71c",
+                width: "40%",
+                borderRadius: "5px",
+              }}
+            >
+              <Accordion style={{ backgroundColor: "rgb(3, 200, 117)" }}>
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel1a-content"
+                  id="panel1a-header"
+                >
+                  <Typography variant="h5" color="white">
+                    What is Short Content?
+                  </Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <Typography variant="p" color="white">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Suspendisse malesuada lacus ex, sit amet blandit leo
+                    lobortis eget.
+                  </Typography>
+                </AccordionDetails>
+              </Accordion>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
+      <div style={{ position: "absolute", left: "0", right: "0", bottom: "0" }}>
+        <Footer />
+      </div>
     </div>
   );
 }

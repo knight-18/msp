@@ -20,7 +20,7 @@ export default function View({ user }) {
     "Filter By Genre": defaultGenres,
     "Filter By Language": defaultLanguages,
   };
-  const MAX_VIDEOS_ON_PAGE = 2;
+  const MAX_VIDEOS_ON_PAGE = 9;
   const availableFiltersKeys = Object.keys(filterMap);
   const [filterType, setFilterType] = useState(availableFiltersKeys[0]);
   const [filterValue, setFilterValue] = useState(
@@ -71,7 +71,6 @@ export default function View({ user }) {
     let reqBody = {
       filterType: filterType,
       filterValue: filterValue,
-      limit: 2,
     };
     if (lastEvaluatedKey) {
       reqBody.lastEvaluatedKey = lastEvaluatedKey;

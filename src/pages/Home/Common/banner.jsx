@@ -37,7 +37,7 @@ const Banner = ({ user }) => {
   return (
     <div className="navbar_full_page">
       <div className="navbar">
-        <h1 style={{fontWeight:"bold !important"}}> 
+        <h1 style={{ fontWeight: "bold !important" }}>
           <a href="/" style={{ textDecoration: "none", color: "white" }}>
             V<span style={{ color: "lime" }}>O</span>D
           </a>
@@ -72,9 +72,6 @@ const Banner = ({ user }) => {
                 Signin
               </a>
             )}
-            {/* <a href="/signin" style={{ textDecoration: "none" }}>
-              {isLoggedIn ? "Sign out" : "Sign in"}
-            </a> */}
           </li>
         </ul>
 
@@ -103,7 +100,9 @@ const Banner = ({ user }) => {
           >
             <div id="box1" className="box blurred-bg tinted">
               <div className="content">
-                <h1 style={{ fontWeight: "bold" }}>Short Content</h1>
+                <Typography variant="h3" fontWeight="bold">
+                  Short Content
+                </Typography>
               </div>
             </div>
           </a>
@@ -125,7 +124,9 @@ const Banner = ({ user }) => {
           >
             <div id="box1" className="box blurred-bg tinted">
               <div className="content">
-                <h1 style={{ fontWeight: "bold" }}>Long Content</h1>
+                <Typography variant="h3" fontWeight="bold">
+                  Long Content
+                </Typography>
               </div>
             </div>
           </a>

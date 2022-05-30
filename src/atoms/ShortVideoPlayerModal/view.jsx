@@ -13,7 +13,7 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: "40%",
+  width: "60vw",
   height: "auto",
 };
 
@@ -129,28 +129,11 @@ export default function ShortVideoPlayerModal({
   }, []);
 
   return (
-    <div style={{ position: "relative", top: "50%" }}>
-      <PlayCircleFilledIcon
-        onClick={handleModalOpen}
-        color="primary"
-        style={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          fontSize: "200px",
-        }}
-      />
+    <div style={{ position: "relative", top: "50%", display: "inline-block" }}>
+      <Button onClick={handleModalOpen} backgroundColor="black" color="white">
+        Discover Now
+      </Button>
 
-      {/* <PlayCircleFilledIcon
-        onClick={handleModalOpen}
-        style={{
-          position: "relative",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-        }}
-      /> */}
       <Modal
         open={isModalOpen}
         onClose={handleModalClose}
@@ -161,7 +144,11 @@ export default function ShortVideoPlayerModal({
           <VideoPlayer videoUrl={currentVideoUrl} autoplay={true} />
           <div style={{ justifyContent: "space-between", display: "flex" }}>
             {currentVideoIndex > 0 && (
-              <Button onClick={async () => await getPreviousVideo()}>
+              <Button
+                onClick={async () => await getPreviousVideo()}
+                backgroundColor="black"
+                color="white"
+              >
                 Prev
               </Button>
             )}
@@ -170,7 +157,13 @@ export default function ShortVideoPlayerModal({
                 style={{ color: isLikeButtonDisabled ? "red" : "white" }}
               />
             </Button>
-            <Button onClick={getNextVideo}>Next</Button>
+            <Button
+              onClick={getNextVideo}
+              backgroundColor="black"
+              color="white"
+            >
+              Next
+            </Button>
           </div>
         </Box>
       </Modal>

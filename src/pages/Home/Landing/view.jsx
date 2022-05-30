@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Footer from "../../../atoms/Footer";
+import "../../../css/styles.css";
 const View = ({ user }) => {
   return (
     <>
@@ -22,8 +23,20 @@ const View = ({ user }) => {
         }}
       >
         <Grid container>
-          <Grid item md={12} sm={12} xs={12} textAlign="center">
-            <Typography variant="h3" component="div" p={5}>
+          <Grid
+            item
+            md={12}
+            sm={12}
+            xs={12}
+            justifyContent="center"
+            display={"flex"}
+          >
+            <Typography
+              variant="h3"
+              component="div"
+              p={5}
+              className="typing-demo"
+            >
               <span style={{ color: "white" }}>all in one </span>
               <span>
                 <i style={{ color: "lime" }}>OTT platform</i>
@@ -75,9 +88,13 @@ const View = ({ user }) => {
             <Grid
               item
               m={1}
-              style={{ backgroundColor: "#1cd71c", width: "40%" }}
+              style={{
+                backgroundColor: "rgb(3, 200, 117)",
+                width: "40%",
+                borderRadius: "5px",
+              }}
             >
-              <Accordion style={{ backgroundColor: "#1cd71c" }}>
+              <Accordion style={{ backgroundColor: "rgb(3, 200, 117)" }}>
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon />}
                   aria-controls="panel1a-content"
@@ -99,9 +116,13 @@ const View = ({ user }) => {
             <Grid
               item
               m={1}
-              style={{ backgroundColor: "#1cd71c", width: "40%" }}
+              style={{
+                backgroundColor: "rgb(3, 200, 117)",
+                width: "40%",
+                borderRadius: "5px",
+              }}
             >
-              <Accordion style={{ backgroundColor: "#1cd71c" }}>
+              <Accordion style={{ backgroundColor: "rgb(3, 200, 117)" }}>
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon />}
                   aria-controls="panel1a-content"
@@ -123,9 +144,13 @@ const View = ({ user }) => {
             <Grid
               item
               m={1}
-              style={{ backgroundColor: "#1cd71c", width: "40%" }}
+              style={{
+                backgroundColor: "rgb(3, 200, 117)",
+                width: "40%",
+                borderRadius: "5px",
+              }}
             >
-              <Accordion style={{ backgroundColor: "#1cd71c" }}>
+              <Accordion style={{ backgroundColor: "rgb(3, 200, 117)" }}>
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon />}
                   aria-controls="panel1a-content"

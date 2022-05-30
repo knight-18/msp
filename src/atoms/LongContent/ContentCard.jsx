@@ -23,7 +23,7 @@ const ContentCard = ({ video }) => {
           </Grid>
           <Grid item>
             <Typography variant="p" color="#818181" fontSize="12px">
-              2h 49min / {video.language} / {video.genres.join(",")}
+              {video.language} / {video.genres.join(",")}
             </Typography>
           </Grid>
           <Grid item alignItems="center">

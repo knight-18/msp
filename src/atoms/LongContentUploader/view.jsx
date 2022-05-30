@@ -17,6 +17,7 @@ import { uploadFile } from "../../utils/storage";
 import defaultLanguages from "../../utils/config/language";
 import defaultGenres from "../../utils/config/genres";
 import "../../css/fileinput.css";
+import Footer from "../Footer";
 
 export default function View({ singOut, user }) {
   const [fileName, setFileName] = useState("");
@@ -179,18 +180,33 @@ export default function View({ singOut, user }) {
             })}
           </Select>
         </div>
-        <div className="file-input" style={{ margin: "5px" }}>
-          <Button style={{ width: "35vw" }}>
-            <input
-              type="file"
-              accept="video/*, image/png"
-              onChange={handleInputChange}
-            />
-          </Button>
+
+        <div
+          className="fileUpload blue-btn btn width100"
+          style={{ width: "35vw", textAlign: "center", margin: "5px" }}
+        >
+          <span>Select File</span>
+          <input
+            type="file"
+            accept="video/*"
+            onChange={handleInputChange}
+            className="uploadlogo"
+          />
         </div>
 
-        <Button onClick={uploadVideo}>Upload</Button>
+        <Button
+          onClick={uploadVideo}
+          disabled={fileData ? false : true}
+          color="white"
+          backgroundColor="black"
+          width="35vw"
+        >
+          Upload
+        </Button>
       </Grid>
+      <div style={{ position: "absolute", left: "0", right: "0", bottom: "0" }}>
+        <Footer />
+      </div>
     </div>
   );
 }
