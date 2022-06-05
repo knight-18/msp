@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import LongVideoRatingModal from "../../atoms/LongVideoRatingModal";
 import { queryDB } from "../../utils/api";
 import { useSearchParams } from "react-router-dom";
-import { getLongVideoRenderUrl } from "../../utils";
+import { fetchSubscriptionStatus, getLongVideoRenderUrl } from "../../utils";
 import Footer from "../../atoms/Footer";
 
 export default function View({ user }) {
@@ -37,6 +37,14 @@ export default function View({ user }) {
     let data = await queryDB(queryParams);
     let fetchedData = data.Items[0];
     console.log("Fetched Data:", fetchedData);
+    if (fetchedData.isPremium) {
+      let subscriptionStatus = await fetchSubscriptionStatus(
+        user.attributes.sub
+      );
+      if (subscriptionStatus === false) {
+        window.location.href = "/premium";
+      }
+    }
     setVideo(fetchedData);
     setVideoUrl(
       getLongVideoRenderUrl(fetchedData.destinationBucketFilePath[0])

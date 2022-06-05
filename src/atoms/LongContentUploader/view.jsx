@@ -11,6 +11,8 @@ import {
   CircularProgress,
   Paper,
   Grid,
+  Checkbox,
+  FormControlLabel,
 } from "@mui/material";
 
 import { uploadFile } from "../../utils/storage";
@@ -28,6 +30,7 @@ export default function View({ singOut, user }) {
   const [language, setLanguage] = useState("");
   const [about, setAbout] = useState("");
   const [isUploading, setIsUploading] = useState(false);
+  const [isPremium, setIsPremium] = useState(false);
   useEffect(() => {}, []);
   const handleInputChange = (e) => {
     setFileName(e.target.files[0].name);
@@ -47,7 +50,9 @@ export default function View({ singOut, user }) {
   const handleAboutChange = (e) => {
     setAbout(e.target.value);
   };
-
+  const handlePremiumChange = (e) => {
+    setIsPremium((isPremium) => !isPremium);
+  };
   const uploadVideo = async () => {
     setIsUploading(true);
     let fileId = uuidv4();
@@ -76,6 +81,7 @@ export default function View({ singOut, user }) {
       language: language,
       createdAt: Date.now(),
       isDeleted: false,
+      isPremium
     });
     console.log("Request Body: ", reqBody);
     await onLongVideoUpload(reqBody);
@@ -180,7 +186,14 @@ export default function View({ singOut, user }) {
             })}
           </Select>
         </div>
-
+        <div>
+          <FormControlLabel
+            control={
+              <Checkbox checked={isPremium} onChange={handlePremiumChange} />
+            }
+            label="Premium Content"
+          />
+        </div>
         <div
           className="fileUpload blue-btn btn width100"
           style={{ width: "35vw", textAlign: "center", margin: "5px" }}

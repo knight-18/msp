@@ -44,3 +44,13 @@ export const fetchOpensearch = async (query) => {
   let response = await axios.get(`${API_URL}/opensearch?q=${query}`);
   return response;
 };
+
+export const createPaymentOrder = async (body) => {
+  let response = await axios.post(`${API_URL}/premium/payment`, body);
+  return response;
+};
+
+export const confirmSubscription = async (body) => {
+  let response = await axios.post(`${API_URL}/premium/confirm`, body);
+  return response;
+};

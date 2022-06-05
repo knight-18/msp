@@ -1,5 +1,6 @@
 import { Auth } from "aws-amplify";
 import Amplify from "@aws-amplify/core";
+import { queryDB } from "./api";
 export const isLoggedIn = async () => {
   try {
     await Auth.currentAuthenticatedUser();
@@ -34,4 +35,33 @@ export const getLongVideoRenderUrl = (keyPath) => {
   return `${process.env.REACT_APP_CLOUDFRONT_DOMAIN}/public/longVideos${
     keyPath.split("longVideos")[1]
   }`;
+};
+
+export const fetchSubscriptionStatus = async (userId) => {
+  let params = {
+    keyConditions: [
+      {
+        attributeName: "userId",
+        comparisonOperator: "EQ",
+        attributeValueList: [userId],
+      },
+    ],
+    tableName: process.env.REACT_APP_SUBSCRIPTION_TABLE_NAME,
+  };
+  let response = await queryDB(params);
+  // console.log("THIS LOG:", response)
+  if (response.Items.length) {
+    let subscriptionData = response.Items[0];
+    let currentTimestamp = Date.now();
+    if (subscriptionData.subscriptionEndTimestamp > currentTimestamp) {
+      return {
+        active: true,
+        subscriptionEndTimestamp: subscriptionData.subscriptionEndTimestamp,
+      };
+    }
+  }
+  return {
+    active: false,
+    subscriptionEndTimestamp: null,
+  };
 };

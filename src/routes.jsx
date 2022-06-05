@@ -17,6 +17,7 @@ const ShortContentUpload = React.lazy(() =>
 const LongContentUpload = React.lazy(() => import("./pages/LongContentUpload"));
 const LongVideoPlayer = React.lazy(() => import("./pages/LongVideoPlayerModal"));
 const Profile = React.lazy(() => import("./pages/Profile"));
+const Premium = React.lazy(()=> import('./pages/Premium'))
 
 export default function Router() {
   return (
@@ -42,6 +43,7 @@ export default function Router() {
           element={<LongVideoPlayer />}
         />
         <Route exact path="/profile" element={<Profile />} />
+        <Route exact path="/premium" element={<Premium />} />
       </Routes>
     </BrowserRouter>
   );

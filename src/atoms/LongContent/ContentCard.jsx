@@ -1,10 +1,16 @@
 import { Typography, Rating, Paper, Grid } from "@mui/material";
 import { Button } from "@aws-amplify/ui-react";
+import StarIcon from "@mui/icons-material/Star";
 // import "../../css/content-card.css";
 const ContentCard = ({ video }) => {
   return (
     <div>
       <Paper elevation={5}>
+        {video.isPremium && (
+          <StarIcon
+            style={{ position: "absolute", color: "aqua", margin: "-5px" }}
+          />
+        )}
         <Grid
           container
           direction="column"
