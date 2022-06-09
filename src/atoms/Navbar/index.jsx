@@ -4,22 +4,22 @@ import { Grid, Paper, Box, Typography } from "@mui/material";
 import { fetchCurrentUser } from "../../utils/authentication";
 
 const MenuItems = [
-  {
-    name: "Home",
-    link: "/",
-    cName: "menu_items",
-  },
+  // {
+  //   name: "Home",
+  //   link: "/",
+  //   cName: "menu_items",
+  // },
 
-  {
-    name: "Short Content",
-    link: "/short-content",
-    cName: "menu_items",
-  },
-  {
-    name: "Long Content",
-    link: "/long-content",
-    cName: "menu_items",
-  },
+  // {
+  //   name: "Short Content",
+  //   link: "/short-content",
+  //   cName: "menu_items",
+  // },
+  // {
+  //   name: "Long Content",
+  //   link: "/long-content",
+  //   cName: "menu_items",
+  // },
 ];
 const Navbar = () => {
   const [clicked, setClicked] = useState(false);

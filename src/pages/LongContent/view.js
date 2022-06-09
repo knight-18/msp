@@ -194,7 +194,7 @@ export default function View({ user }) {
           alignItems="center"
           justifyContent="space-evenly"
         >
-          <Grid item md={6} sm={6}>
+          {/* <Grid item md={6} sm={6}>
             <Button>
               <a
                 href="/upload-long-content"
@@ -203,7 +203,7 @@ export default function View({ user }) {
                 Upload Video
               </a>
             </Button>
-          </Grid>
+          </Grid> */}
           <Grid item md={6} sm={6}>
             <div>
               <Select

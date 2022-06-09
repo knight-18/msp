@@ -37,9 +37,9 @@ const View = ({ user }) => {
               p={5}
               className="typing-demo"
             >
-              <span style={{ color: "white" }}>all in one </span>
+              <span style={{ color: "white" }}>Media </span>
               <span>
-                <i style={{ color: "lime" }}>OTT platform</i>
+                <i style={{ color: "lime" }}>Streaming</i>
               </span>
             </Typography>
           </Grid>

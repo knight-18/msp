@@ -4,21 +4,21 @@ import { Grid, Paper, Box, Typography } from "@mui/material";
 import { fetchCurrentUser, handleSignOut } from "../../../utils/authentication";
 
 const MenuItems = [
-  {
-    name: "Home",
-    link: "/",
-    cName: "menu_items",
-  },
-  {
-    name: "Short Content",
-    link: "/short-content",
-    cName: "menu_items",
-  },
-  {
-    name: "Long Content",
-    link: "/long-content",
-    cName: "menu_items",
-  },
+  // {
+  //   name: "Home",
+  //   link: "/",
+  //   cName: "menu_items",
+  // },
+  // {
+  //   name: "Short Content",
+  //   link: "/short-content",
+  //   cName: "menu_items",
+  // },
+  // {
+  //   name: "Long Content",
+  //   link: "/long-content",
+  //   cName: "menu_items",
+  // },
 ];
 const Banner = ({ user }) => {
   const [clicked, setClicked] = useState(false);
@@ -101,7 +101,7 @@ const Banner = ({ user }) => {
             <div id="box1" className="box blurred-bg tinted">
               <div className="content">
                 <Typography variant="h3" fontWeight="bold">
-                  Short Content
+                  Social Media Streaming
                 </Typography>
               </div>
             </div>
@@ -125,7 +125,7 @@ const Banner = ({ user }) => {
             <div id="box1" className="box blurred-bg tinted">
               <div className="content">
                 <Typography variant="h3" fontWeight="bold">
-                  Long Content
+                  OTT Streaming
                 </Typography>
               </div>
             </div>
