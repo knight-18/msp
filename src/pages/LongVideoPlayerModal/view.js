@@ -13,7 +13,6 @@ export default function View({ user }) {
   const [isRatingModalOpen, setIsRatingModalOpen] = useState(false);
   const handleRatingModalOpen = () => setIsRatingModalOpen(true);
   const handleRatingModalClose = () => setIsRatingModalOpen(false);
-  const [ratingValue, setRatingValue] = useState(2);
 
   const [URLSearchParams] = useSearchParams();
   const [video, setVideo] = useState(null);
@@ -41,7 +40,7 @@ export default function View({ user }) {
       let subscriptionStatus = await fetchSubscriptionStatus(
         user.attributes.sub
       );
-      if (subscriptionStatus === false) {
+      if (subscriptionStatus.active === false) {
         window.location.href = "/premium";
       }
     }
