@@ -92,7 +92,7 @@ export default function View({ user }) {
               }}
             >
               <Grid item>
-                <Typography variant="h4">Short Content</Typography>
+                <Typography variant="h4">Social Media Streaming</Typography>
                 <Typography variant="h2">
                   Short, entertaining <br /> videos to express your creativity
                 </Typography>
@@ -143,14 +143,14 @@ export default function View({ user }) {
                   id="panel1a-header"
                 >
                   <Typography variant="h5" color="white">
-                    What is Short Content?
+                    What is Social Media Streaming?
                   </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography variant="p" color="white">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse malesuada lacus ex, sit amet blandit leo
-                    lobortis eget.
+                    Social Media Streaming refers to the short, entertaining
+                    videos. Users can interact with the videos and also express
+                    their creativity.
                   </Typography>
                 </AccordionDetails>
               </Accordion>

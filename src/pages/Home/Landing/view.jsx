@@ -106,9 +106,9 @@ const View = ({ user }) => {
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography variant="p" color="white">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse malesuada lacus ex, sit amet blandit leo
-                    lobortis eget.
+                    VOD stands for Video On Demand which is a media distribution
+                    system that allows users to access videos. With VOD, viewers
+                    can choose what to watch, when they want.
                   </Typography>
                 </AccordionDetails>
               </Accordion>
@@ -129,14 +129,14 @@ const View = ({ user }) => {
                   id="panel1a-header"
                 >
                   <Typography variant="h5" color="white">
-                    What is VOD?
+                    What is Social Media Streaming?
                   </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography variant="p" color="white">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse malesuada lacus ex, sit amet blandit leo
-                    lobortis eget.
+                    Social Media Streaming refers to the short, entertaining
+                    videos. Users can interact with the videos and also express
+                    their creativity.
                   </Typography>
                 </AccordionDetails>
               </Accordion>
@@ -157,14 +157,14 @@ const View = ({ user }) => {
                   id="panel1a-header"
                 >
                   <Typography variant="h5" color="white">
-                    What is VOD?
+                    What is OTT Streaming?
                   </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography variant="p" color="white">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse malesuada lacus ex, sit amet blandit leo
-                    lobortis eget.
+                    OTT stands for “over-the-top” and refers to the productized
+                    practice of streaming content to customers directly over the
+                    web.
                   </Typography>
                 </AccordionDetails>
               </Accordion>
